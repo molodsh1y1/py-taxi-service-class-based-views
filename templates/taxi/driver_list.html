@@ -1,12 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<ul>
-		{% for driver in driver_list %}
-			<li><a href="{% url 'taxi:driver-detail' driver.id %}">{{ driver.first_name }} {{ driver.last_name}}</a></li>
-			{% empty %}
-			<li>No drivers are available</li>
-	{% endfor %}
-	</ul>
-	{% include 'includes/pagination.html' %}
+  <table class="table">
+    <tr>
+      <th>Driver</th>
+      <th>All cars</th>
+    </tr>
+    {% for driver in driver_list %}
+      <tr>
+        <td>
+          {{ driver.first_name }}  {{ driver.last_name }}
+        </td>
+        <td>
+          <a href="{% url 'taxi:driver-detail' pk=driver.id %}" class="btn btn-primary btn-sm">
+            Detail info
+          </a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="2">No drivers are available.</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  {% include 'includes/pagination.html' %}
 {% endblock %}
