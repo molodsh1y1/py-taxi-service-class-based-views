@@ -4,8 +4,8 @@
 	<ul>
 		{% for manufacturer in manufacturer_list %}
 			<li>Name: {{ manufacturer.name }} country: {{ manufacturer.country }}</li>
-      {% empty %}
-      <li>No manufacturers available</li>
+			{% empty %}
+			<li>No manufacturers available</li>
 		{% endfor %}
 	</ul>
 	{% include 'includes/pagination.html' %}
